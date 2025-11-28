@@ -1,0 +1,398 @@
+:root {
+    --primary: #b026ff;
+    --secondary: #00f0ff;
+    --accent: #39ff14;
+    --dark: #0a0a12;
+    --light: #f0f0f0;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: rgba(10, 10, 18, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+nav a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Hero */
+#hero {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 120px;
+    /* Header (~70px) + 50px gap */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align to top */
+    background: radial-gradient(circle at center, #2a1a3a 0%, var(--dark) 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/bg.png');
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+#hero h1 {
+    font-size: 5rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 20px rgba(176, 38, 255, 0.5));
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: #ccc;
+    display: none;
+    /* Hide description */
+}
+
+.cta-button {
+    padding: 15px 40px;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 0 20px var(--primary);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px var(--primary);
+}
+
+/* Game UI Layer */
+#game-ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to canvas when no UI is active */
+    z-index: 10;
+}
+
+#start-screen,
+#game-over-screen,
+#loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--secondary);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    pointer-events: auto;
+    /* Re-enable clicks for buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-screen {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #fff;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Sections */
+section {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: var(--light);
+    text-shadow: 0 0 10px var(--glass);
+}
+
+/* Game Section */
+#game-container {
+    position: relative;
+    width: 360px;
+    height: 480px;
+    margin: 0 auto;
+    background: #000;
+    border: 2px solid var(--secondary);
+    box-shadow: 0 0 20px var(--secondary);
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive Game Container */
+@media (max-width: 650px) {
+    #game-container {
+        width: 100%;
+        height: 133vw;
+        /* Maintain aspect ratio */
+        max-height: 80vh;
+    }
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--secondary);
+    color: var(--dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px var(--secondary);
+    transition: 0.3s;
+}
+
+button:hover {
+    background: white;
+    box-shadow: 0 0 25px white;
+}
+
+#game-over-screen button {
+    margin: 10px;
+}
+
+/* High Score Styles */
+#high-score-list {
+    margin: 15px 0;
+    text-align: left;
+    width: 100%;
+    max-width: 200px;
+}
+
+#high-score-list h4 {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#high-score-list ol {
+    padding-left: 20px;
+    color: var(--light);
+}
+
+#high-score-list li {
+    margin-bottom: 5px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+#high-score-input-container {
+    margin: 15px 0;
+}
+
+#player-name {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Members */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    /* Center items if they don't fill the row */
+    justify-items: center;
+    /* Center items within their grid cells if needed, though usually for grid-template-columns it's automatic */
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass);
+    transition: transform 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.member-img {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.member-card:hover .member-img img {
+    transform: scale(1.1);
+}
+
+.member-card h3 {
+    color: var(--secondary);
+    margin-bottom: 5px;
+}
+
+/* Biography */
+.bio-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 20px;
+    border-left: 4px solid var(--primary);
+}
+
+.bio-content p {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    padding: 30px;
+    text-align: center;
+    background: #050508;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    #game-container {
+        width: 100%;
+        height: 300px;
+    }
+
+    .char-img-wrap {
+        width: 60px;
+        height: 60px;
+    }
+}

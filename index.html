@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mushroomstamps Official Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">mushroomstamps</div>
+            <ul>
+                <li><a href="#game">GAME</a></li>
+                <li><a href="#members">MEMBERS</a></li>
+                <li><a href="#biography">BIOGRAPHY</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>mushroomstamps</h1>
+            <!-- Game Container Moved Here -->
+            <div id="game-container">
+                <div id="game-ui-layer">
+                    <div id="start-screen">
+                        <h3>MUSHROOM PUZZLE</h3>
+                        <p>Drop and merge mushrooms!</p>
+                        <div id="high-score-list"></div>
+                        <button id="start-btn" onclick="startGame(event)">START GAME</button>
+                    </div>
+                    <div id="loading-screen" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>LOADING...</p>
+                        <p id="loading-progress" style="font-size: 0.8rem; margin-top: 5px;">0%</p>
+                    </div>
+                    <div id="game-over-screen" class="hidden" style="display: none;">
+                        <h3>GAME OVER</h3>
+                        <p>Score: <span id="final-score">0</span></p>
+                        <div id="high-score-input-container" style="display: none;">
+                            <input type="text" id="player-name" placeholder="Enter Name" maxlength="10">
+                            <button onclick="submitHighScore()">SAVE SCORE</button>
+                        </div>
+                        <button id="restart-btn" onclick="startGame(event)">TRY AGAIN</button>
+                    </div>
+                    <div id="score-display" style="display: none;">SCORE: <span id="current-score">0</span></div>
+                    <div id="next-display" style="display: none;">NEXT: <img id="next-img" src="" alt=""></div>
+                </div>
+                <!-- Canvas will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section Removed (Moved to Hero) -->
+
+    <section id="members">
+        <div class="container">
+            <h2>MEMBERS</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1410.jpg" alt="haru"></div>
+                    <h3>haru</h3>
+                    <p>Vo. / Gu.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1441.jpg" alt="jojo"></div>
+                    <h3>jojo</h3>
+                    <p>Gu.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1390.jpg" alt="KENKICHI"></div>
+                    <h3>KENKICHI</h3>
+                    <p>Gu.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1453.jpg" alt="jotaro"></div>
+                    <h3>jotaro</h3>
+                    <p>Ba.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1421.jpg" alt="eiichi"></div>
+                    <h3>eiichi</h3>
+                    <p>Key.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img"><img src="img/mash_fix1465.jpg" alt="ichiro"></div>
+                    <h3>ichiro</h3>
+                    <p>Dr.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="biography">
+        <div class="container">
+            <h2>BIOGRAPHY</h2>
+            <div class="bio-content">
+                <p>mushroomstamps was formed in the deep forests of sound, where psychedelic rock meets electronic
+                    beats. Inspired by the organic growth of mushrooms and the stamping rhythm of life, they bring a
+                    unique auditory experience to the world.</p>
+                <p>Starting from small underground live houses, they have grown into a mycelium network of fans across
+                    the globe. Their music is a trip, a journey, and a spore-spreading phenomenon.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 mushroomstamps. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <script src="game.js?v=3"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
