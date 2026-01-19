@@ -39,14 +39,20 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 50px;
-    background: rgba(10, 10, 18, 0.8);
+    padding: 10px 40px;
+    /* Reduced padding slightly for better fit */
+    background: rgba(10, 10, 18, 0.9);
+    /* Slightly darker/more opaque */
     backdrop-filter: blur(10px);
     z-index: 1000;
+    border-bottom: 1px solid var(--glass);
+}
+
+nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--glass);
 }
 
 .logo {
@@ -54,12 +60,18 @@ header {
     font-weight: 700;
     color: var(--secondary);
     text-shadow: 0 0 10px var(--secondary);
+    /* Ensure logo stays on left */
+    flex-shrink: 0;
 }
 
 nav ul {
     display: flex;
     gap: 30px;
     list-style: none;
+    /* Center the nav links */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav a {
@@ -75,46 +87,10 @@ nav a:hover {
 /* SNS Icons */
 .header-sns {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     align-items: center;
-    margin-left: 20px;
-}
-
-.hero-logo {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.hero-logo img {
-    width: 100%;
-    height: auto;
-}
-
-.hero-sns {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.hero-sns .sns-icon {
-    color: #333;
-}
-
-.hero-sns .sns-icon:hover {
-    color: var(--primary);
-    filter: drop-shadow(0 0 8px var(--primary));
-}
-
-.hero-sns .sns-icon-disabled {
-    color: #999;
-}
-
-.hero-sns .sns-icon-disabled:hover {
-    color: #999;
-    filter: none;
+    /* Ensure SNS stays on right */
+    flex-shrink: 0;
 }
 
 .sns-icon {
@@ -122,33 +98,53 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     color: var(--light);
-    transition: color 0.3s, transform 0.3s, filter 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .sns-icon:hover {
     color: var(--secondary);
     transform: scale(1.1);
-    filter: drop-shadow(0 0 8px var(--secondary));
 }
 
 .sns-icon-small {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .sns-icon-small svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .sns-icon-large {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 }
 
 .sns-icon-large svg {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
+}
+
+/* ... existing hero styles ... */
+
+.hero-sns {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    /* Increased from 40px */
+}
+
+.hero-sns .sns-icon {
+    color: var(--dark);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.hero-sns .sns-icon:hover {
+    color: var(--primary);
+    transform: scale(1.1);
 }
 
 .sns-icon-disabled {
@@ -184,6 +180,19 @@ nav a:hover {
 .hero-content {
     position: relative;
     z-index: 1;
+    width: 100%;
+    /* Ensure content container doesn't overflow */
+    max-width: 800px;
+    /* Optional: limit max width on large screens */
+    margin: 0 auto;
+}
+
+.hero-logo img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Center the image */
 }
 
 
@@ -286,29 +295,38 @@ h2 {
     width: 360px;
     height: 480px;
     margin: 0 auto;
-    background: #000;
+    background-color: #050508;
+    /* Dark background */
     border: 2px solid var(--secondary);
     box-shadow: 0 0 20px var(--secondary);
     overflow: hidden;
     border-radius: 10px;
+    z-index: 0;
 }
 
-#game-canvas {
+#bg-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    /* Constrain size */
+    opacity: 0.15;
+    /* Make it subtle gray */
+    z-index: 0;
+    pointer-events: none;
+}
+
+canvas {
     display: block;
     width: 100%;
     height: 100%;
+    position: relative;
+    z-index: 1;
+    /* Above logo */
 }
 
-/* Responsive Game Container */
-@media (max-width: 650px) {
-    #game-container {
-        width: 100%;
-        height: 133vw;
-        /* Maintain aspect ratio */
-        max-height: 80vh;
-    }
-}
-
+/* Button Styles */
 button {
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -326,6 +344,47 @@ button {
 button:hover {
     background: white;
     box-shadow: 0 0 25px white;
+}
+
+/* Game UI Layer */
+#game-ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Pass clicks to canvas */
+    z-index: 10;
+}
+
+/* Enable pointer events for buttons/inputs inside UI layer */
+#game-ui-layer>* {
+    pointer-events: auto;
+}
+
+#end-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    z-index: 100;
+    margin: 0;
+    background: rgba(255, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    transition: 0.2s;
+    cursor: pointer;
+    display: none;
+    /* Hidden until game starts */
+}
+
+#end-btn:hover {
+    background: rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 10px red;
+    transform: scale(1.05);
 }
 
 #game-over-screen button {
@@ -702,6 +761,7 @@ footer {
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
+
     /* Header */
     header {
         padding: 15px 20px;
@@ -819,51 +879,52 @@ footer {
         padding: 20px 15px;
         font-size: 0.85rem;
     }
+}
 
-    /* Game UI */
-    #start-screen h3,
-    #game-over-screen h3 {
-        font-size: 1.2rem;
-    }
+/* Game UI */
+#start-screen h3,
+#game-over-screen h3 {
+    font-size: 1.2rem;
+}
 
-    button {
-        padding: 12px 24px;
-        font-size: 1rem;
-    }
+button {
+    padding: 12px 24px;
+    font-size: 1rem;
+}
 
-    #high-score-list {
-        max-width: 160px;
-    }
+#high-score-list {
+    max-width: 160px;
+}
 
-    #player-name {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+#player-name {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
 
-    #high-score-input-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+#high-score-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    /* Modal on mobile */
-    .member-modal-content {
-        width: 95%;
-        max-height: 85vh;
-    }
+/* Modal on mobile */
+.member-modal-content {
+    width: 95%;
+    max-height: 85vh;
+}
 
-    .member-modal-info {
-        padding: 20px;
-    }
+.member-modal-info {
+    padding: 20px;
+}
 
-    .member-modal-info h3 {
-        font-size: 1.5rem;
-    }
+.member-modal-info h3 {
+    font-size: 1.5rem;
+}
 
-    .member-modal-bio {
-        font-size: 0.9rem;
-    }
+.member-modal-bio {
+    font-size: 0.9rem;
+}
 }
 
 /* Responsive - Small Mobile */
