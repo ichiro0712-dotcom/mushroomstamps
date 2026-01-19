@@ -1,0 +1,26 @@
+{
+  "name": "mushroomstamps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ichiro0712-dotcom/mushroomstamps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ichiro0712-dotcom/mushroomstamps/issues"
+  },
+  "homepage": "https://github.com/ichiro0712-dotcom/mushroomstamps#readme",
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}

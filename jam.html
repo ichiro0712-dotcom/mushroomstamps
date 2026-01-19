@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mushroomjam 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Seymour+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+    }
+
+    .fixed {
+      position: fixed;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .top-0 {
+      top: 0;
+    }
+
+    .right-0 {
+      right: 0;
+    }
+
+    .left-0 {
+      left: 0;
+    }
+
+    .z-0 {
+      z-index: 0;
+    }
+
+    .z-10 {
+      z-index: 10;
+    }
+
+    .z-50 {
+      z-index: 50;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mt-4 {
+      margin-top: 1rem;
+    }
+
+    .mt-8 {
+      margin-top: 2rem;
+    }
+
+    .mt-12 {
+      margin-top: 3rem;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+
+    .mb-12 {
+      margin-bottom: 3rem;
+    }
+
+    .ml-4 {
+      margin-left: 1rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .inline-flex {
+      display: inline-flex;
+    }
+
+    .aspect-square {
+      aspect-ratio: 1;
+    }
+
+    .size-4 {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .size-9 {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+
+    .h-5 {
+      height: 1.25rem;
+    }
+
+    .h-8 {
+      height: 2rem;
+    }
+
+    .h-9 {
+      height: 2.25rem;
+    }
+
+    .h-10 {
+      height: 2.5rem;
+    }
+
+    .h-24 {
+      height: 6rem;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    .min-h-screen {
+      min-height: 100vh;
+    }
+
+    .w-5 {
+      width: 1.25rem;
+    }
+
+    .w-24 {
+      width: 6rem;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .max-w-4xl {
+      max-width: 56rem;
+    }
+
+    .max-w-6xl {
+      max-width: 72rem;
+    }
+
+    .max-w-7xl {
+      max-width: 80rem;
+    }
+
+    .shrink-0 {
+      flex-shrink: 0;
+    }
+
+    .cursor-pointer {
+      cursor: pointer;
+    }
+
+    .list-inside {
+      list-style-position: inside;
+    }
+
+    .list-disc {
+      list-style-type: disc;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .gap-1\.5 {
+      gap: 0.375rem;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-8 {
+      gap: 2rem;
+    }
+
+    .space-y-1 > :not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+
+    .space-y-2 > :not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    .space-y-6 > :not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+
+    .space-y-8 > :not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    .space-y-12 > :not(:last-child) {
+      margin-bottom: 3rem;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+
+    .rounded-md {
+      border-radius: 0.375rem;
+    }
+
+    .rounded-none {
+      border-radius: 0;
+    }
+
+    .border {
+      border-width: 1px;
+      border-style: solid;
+    }
+
+    .border-t {
+      border-top-width: 1px;
+      border-top-style: solid;
+    }
+
+    .border-b {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
+
+    .border-gray-700 {
+      border-color: #374151;
+    }
+
+    .border-gray-800 {
+      border-color: #1f2937;
+    }
+
+    .bg-background {
+      background-color: #fff;
+    }
+
+    .bg-black {
+      background-color: #000;
+    }
+
+    .bg-black\/20 {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .bg-black\/30 {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .bg-black\/60 {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .bg-black\/80 {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .bg-gray-800 {
+      background-color: #1f2937;
+    }
+
+    .object-cover {
+      object-fit: cover;
+    }
+
+    .p-8 {
+      padding: 2rem;
+    }
+
+    .px-3 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .px-8 {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .py-20 {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .pt-4 {
+      padding-top: 1rem;
+    }
+
+    .pt-24 {
+      padding-top: 6rem;
+    }
+
+    .pb-4 {
+      padding-bottom: 1rem;
+    }
+
+    .pb-8 {
+      padding-bottom: 2rem;
+    }
+
+    .pb-20 {
+      padding-bottom: 5rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .leading-relaxed {
+      line-height: 1.625;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .whitespace-nowrap {
+      white-space: nowrap;
+    }
+
+    .text-black {
+      color: #000;
+    }
+
+    .text-gray-300 {
+      color: #d1d5db;
+    }
+
+    .text-gray-600 {
+      color: #4b5563;
+    }
+
+    .text-white {
+      color: #fff;
+    }
+
+    .underline-offset-4 {
+      text-underline-offset: 4px;
+    }
+
+    .outline {
+      outline-width: 1px;
+      outline-style: solid;
+    }
+
+    .backdrop-blur-sm {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+
+    .transition-colors {
+      transition-property: color, background-color, border-color;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+
+    .outline-none {
+      outline: none;
+    }
+
+    .placeholder-image {
+      background-color: #fff76a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 0.875rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .md\:flex {
+        display: flex;
+      }
+
+      .md\:hidden {
+        display: none;
+      }
+
+      .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .md\:text-base {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+
+      .md\:text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // 画像パスの設定（フォールバック付き）
+    const getImagePath = (imageName, fallbackText = '画像') => {
+      return `img/${imageName}`;
+    };
+
+    // 画像読み込みエラーハンドラー
+    const handleImageError = (e, fallbackText = '画像') => {
+      e.target.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'placeholder-image w-full h-full';
+      placeholder.textContent = fallbackText;
+      e.target.parentNode.appendChild(placeholder);
+    };
+
+    // 背景画像のパス
+    const bgImage = getImagePath('background.png', '背景画像');
+
+    // アイコンコンポーネント
+    const MenuIcon = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    );
+
+    const XIcon = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    );
+
+    const UsersIcon = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+    );
+
+    const ArrowLeftIcon = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    );
+
+    const MushroomIcon = () => (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 6C11 6 7 10 7 15C7 16 7 17 7 17H25C25 17 25 16 25 15C25 10 21 6 16 6Z" fill="#fff76a"/>
+        <ellipse cx="11" cy="13" rx="1.5" ry="1.5" fill="#000"/>
+        <ellipse cx="21" cy="13" rx="1.5" ry="1.5" fill="#000"/>
+        <rect x="13" y="17" width="6" height="9" rx="1" fill="#fff76a"/>
+        <path d="M13 22H19V24H13V22Z" fill="#e6e6e6"/>
+      </svg>
+    );
+
+    // Buttonコンポーネント
+    const Button = ({ className = '', children, ...props }) => {
+      const baseClasses = 'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none';
+      return (
+        <button className={`${baseClasses} ${className}`} {...props}>
+          {children}
+        </button>
+      );
+    };
+
+    // ImageWithFallbackコンポーネント
+    const ImageWithFallback = ({ src, alt, className = '', style = {}, fallbackText = '画像' }) => {
+      const [hasError, setHasError] = useState(false);
+
+      if (hasError) {
+        return (
+          <div className={`placeholder-image w-full h-full ${className}`} style={style}>
+            {fallbackText}
+          </div>
+        );
+      }
+
+      return (
+        <img 
+          src={src} 
+          alt={alt} 
+          className={className}
+          style={style}
+          onError={() => setHasError(true)}
+        />
+      );
+    };
+
+    // BackgroundImageコンポーネント（背景画像のフォールバック付き）
+    const BackgroundImage = ({ src }) => {
+      const [hasError, setHasError] = useState(false);
+      const [imgLoaded, setImgLoaded] = useState(false);
+
+      React.useEffect(() => {
+        const img = new Image();
+        img.onload = () => setImgLoaded(true);
+        img.onerror = () => {
+          setHasError(true);
+          setImgLoaded(true); // エラーでも読み込み完了として扱う
+        };
+        img.src = src;
+      }, [src]);
+
+      // iOS/モバイルデバイスの検出
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      // エラー時または読み込み前は黄色の背景を表示
+      if (hasError || !imgLoaded) {
+        return (
+          <div
+            className="fixed inset-0 z-0"
+            style={{
+              backgroundColor: '#fff76a',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: isIOS ? 'scroll' : 'fixed',
+              backgroundRepeat: 'no-repeat'
+            }}
+          />
+        );
+      }
+
+      // 画像が正常に読み込まれた場合
+      // iOSではbackground-attachment: fixedがサポートされていないため、scrollを使用
+      return (
+        <div
+          className="fixed inset-0 z-0"
+          style={{
+            backgroundImage: `url('${src}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: isIOS ? 'scroll' : 'fixed',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+      );
+    };
+
+    // HomePageコンポーネント
+    const HomePage = ({ onNavigateToNews }) => {
+      const applicationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeQCrP79MVOQz9JqYtHNsCCrRSKIbBkrTfLA3MmzWGqSacIxQ/viewform?usp=header";
+
+      const news = [
+      {
+          date: "2025.10.28",
+          title: "参加配信者募集開始",
+          description: "イベントに参加したい配信者の募集を開始いたしました。演奏とファンとのコミュニケーションを本気でしたい配信者の方々の応募をお待ちしております。イベント会議への参加、30分のステージの準備、動画内での告知協力など、ご協力いただける方を募集しています。参加ご希望の方は応募フォームよりご応募ください。"
+        },
+        {
+          date: "2025.11.1",
+          title: "企画始動",
+          description: "配信者たちによる新しい音楽イベント「mushroomjam2026」の企画がスタートしました。普段は音楽活動をしていない配信者たちが集まり、本気の音楽LIVEを届けるという前代未聞の企画です。参加者も一緒に楽しめる体験型コンテンツも多数企画中です。今後の情報公開をどうぞお楽しみに！"
+        }
+      ];
+
+      const artists = [
+        { name: "Mushroom Stamps", description: "下北沢で活動するコミックバンド、最近配信はじめたよ！", image: getImagePath('mushroom-stamps.png', 'Mushroom Stamps') },
+        { name: "アーティスト名 2", description: "ゲーム配信者として人気。音楽への情熱を込めたステージをお届けします。" },
+        { name: "アーティスト名 3", description: "トーク配信メインの配信者。隠れた歌の才能を披露します。" },
+        { name: "アーティスト名 4", description: "バラエティ企画で活躍中。バンドでの本気のパフォーマンスをお楽しみに。" },
+        { name: "アーティスト名 5", description: "配信界の新星。練習を重ねた渾身のステージを見せます。" }
+      ];
+
+      return (
+        <>
+          {/* Title Section */}
+          <section id="home" className="min-h-screen flex items-center justify-center px-6">
+            <div className="text-center">
+              <h1 
+                className="text-white mb-8"
+                style={{ 
+                  fontFamily: "'Seymour One', serif",
+                  fontSize: 'clamp(3rem, 10vw, 8rem)',
+                  fontWeight: 'bold',
+                  letterSpacing: '-6px',
+                  lineHeight: '0.9'
+                }}
+              >
+                mushroomjam<br />2026
+              </h1>
+              <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+                <Button className="text-black px-8 py-6 rounded-none" style={{ backgroundColor: '#fff76a' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ffe94d'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff76a'}>
+                  <span className="font-bold">応募はこちら</span>
+                </Button>
+              </a>
+            </div>
+          </section>
+
+          {/* News Section */}
+          <section id="news" className="bg-black py-20 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 
+                className="mb-12 text-center"
+                style={{ 
+                  fontFamily: "'Architects Daughter', cursive",
+                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                NEWS
+              </h2>
+              <div className="space-y-8">
+                {news.map((item, index) => (
+                  <div key={index} className="border-b border-gray-700 pb-8">
+                    <h3 
+                      className="mb-2"
+                      style={{ 
+                        fontFamily: 'Lulo Clean, sans-serif',
+                        fontWeight: 'bold',
+                        color: '#fff76a'
+                      }}
+                    >
+                      {item.date} {item.title}
+                    </h3>
+                    <p className="text-white">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center mt-8">
+                <button 
+                  onClick={onNavigateToNews}
+                  className="transition-colors"
+                  style={{ color: '#fff76a', background: 'transparent', border: 'none' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffe94d'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#fff76a'}
+                >
+                  もっと読む →
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* About Section */}
+          <section id="about" className="bg-black/20 backdrop-blur-sm py-20 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 
+                className="mb-12 text-center"
+                style={{ 
+                  fontFamily: "'Architects Daughter', cursive",
+                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                ABOUT
+              </h2>
+              <div className="text-white space-y-8">
+                <p className="text-center text-lg md:text-xl">
+                  配信者たちの<span style={{ color: '#fff76a', fontWeight: 'bold' }}>超素人本気音楽フェス！！</span><br />
+                  普段は音楽活動をしていない配信者たちの本気の音楽LIVE<br />
+                  参加者も一緒に楽しめるイベントも！
+                </p>
+                
+                <div className="space-y-6 mt-12 text-sm md:text-base">
+                  <div>
+                    <h3 className="mb-2" style={{ color: '#fff76a', fontWeight: 'bold' }}>参加アーティストによる生バンドLIVE</h3>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>普段音楽活動をしていない配信者の違う一面を生のステージで</li>
+                      <li>素人だけど、本気で練習してきた熱量を感じて一緒に盛り上がる</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-2" style={{ color: '#fff76a', fontWeight: 'bold' }}>参加型コンテンツでファンと一緒に盛り上がる</h3>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>ステージで様々なゲームや動画でやった企画を一緒に体験</li>
+                      <li>動画内にあった"あの企画"を体験できる体験ブース</li>
+                      <li>配信者も会場に混じって一緒に盛り上がる</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-2" style={{ color: '#fff76a', fontWeight: 'bold' }}>生バンドによるカラオケタイム</h3>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>バンド演奏だけでなく、フリータイムに配信者や参加者がステージで生バンドで歌える時間を用意、みんなで楽しもう</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-2" style={{ color: '#fff76a', fontWeight: 'bold' }}>イベントの様子は後日配信</h3>
+                    <ul className="list-disc list-inside space-y-1 ml-4">
+                      <li>イベントの様子を後日参加配信者のチャンネルで公開</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="text-center mt-12">
+                  <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+                    <Button className="text-black px-8 py-6 rounded-none" style={{ backgroundColor: '#fff76a' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ffe94d'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff76a'}>
+                      <span className="font-bold">応募はこちら</span>
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Artist Section */}
+          <section id="artist" className="bg-black py-20 px-6">
+            <div className="max-w-6xl mx-auto">
+              <h2 
+                className="mb-4 text-center"
+                style={{ 
+                  fontFamily: "'Architects Daughter', cursive",
+                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                ARTIST
+              </h2>
+              <p 
+                className="text-center mb-12"
+                style={{ 
+                  fontFamily: 'Lulo Clean, sans-serif',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                出演アーティスト
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {artists.map((artist, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-full aspect-square bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                      {artist.image ? (
+                        <ImageWithFallback 
+                          src={artist.image} 
+                          alt={artist.name} 
+                          className="w-full h-full object-cover"
+                          fallbackText="ここに画像が入るはず"
+                        />
+                      ) : (
+                        <div className="placeholder-image w-full h-full">
+                          ここに画像が入るはず
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="mb-2" style={{ color: '#fff76a' }}>{artist.name}</h3>
+                    <p className="text-white text-sm">{artist.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Details Section */}
+          <section id="details" className="bg-black py-20 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 
+                className="mb-4 text-center"
+                style={{ 
+                  fontFamily: "'Architects Daughter', cursive",
+                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                Details
+              </h2>
+              <p 
+                className="text-center mb-12"
+                style={{ 
+                  fontFamily: 'Lulo Clean, sans-serif',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                イベント詳細
+              </p>
+              <div className="text-white space-y-8">
+                <div>
+                  <h3 
+                    className="mb-4"
+                    style={{ 
+                      fontFamily: 'Lulo Clean, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#fff76a'
+                    }}
+                  >
+                    開催概要
+                  </h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>２０２６年２月８日　１６：００〜２２：００</li>
+                    <li>渋谷GRIT（仮）</li>
+                    <li>チケット：4500円（1drink）</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 
+                    className="mb-4"
+                    style={{ 
+                      fontFamily: 'Lulo Clean, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#fff76a'
+                    }}
+                  >
+                    LIVE・生バンドカラオケ
+                  </h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>30分前後のステージを5ステージ</li>
+                    <li>楽曲以外にステージ上での参加型企画なども</li>
+                    <li>LIVE終了後ステージを生バンドカラオケ会場として開放</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 
+                    className="mb-4"
+                    style={{ 
+                      fontFamily: 'Lulo Clean, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#fff76a'
+                    }}
+                  >
+                    コンテンツ
+                  </h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>LIVE中の参加型企画</li>
+                    <li>動画でやったあの企画体験ブース</li>
+                    <li>物販ブース</li>
+                    <li>テキーラガール</li>
+                    <li>配信者手作りカレー（仮）</li>
+                  </ul>
+                </div>
+
+                <div className="text-center mt-12">
+                  <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+                    <Button className="text-black px-8 py-6 rounded-none" style={{ backgroundColor: '#fff76a' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ffe94d'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff76a'}>
+                      <span className="font-bold">応募はこちら</span>
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Requirements Section */}
+          <section id="requirements" className="bg-black/30 backdrop-blur-sm py-20 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 
+                className="mb-12 text-center"
+                style={{ 
+                  fontFamily: 'Lulo Clean, sans-serif',
+                  fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                  fontWeight: 'bold',
+                  color: '#fff76a'
+                }}
+              >
+                参加要項
+              </h2>
+              <div className="text-white space-y-8">
+                <div>
+                  <h3 className="mb-4" style={{ color: '#fff76a', fontWeight: 'bold' }}>参加資格</h3>
+                  <p className="ml-4">演奏とファンとのコミニュケーションを本気でしたい配信者</p>
+                </div>
+
+                <div>
+                  <h3 className="mb-4" style={{ color: '#fff76a', fontWeight: 'bold' }}>協力事項</h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>イベント会議への参加</li>
+                    <li>30分の自身のステージの準備</li>
+                    <li>動画内での告知協力（告知・練習風景などの配信）</li>
+                    <li>イベントや準備期間の映像の使用許可（内容確認可）</li>
+                    <li>アフターパーティー・VIP席への会席参加</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="mb-4" style={{ color: '#fff76a', fontWeight: 'bold' }}>主催協力事項</h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>会場・機材・バックバンド・テキーラガールの手配</li>
+                    <li>告知用MV・webサイト・の作成</li>
+                    <li>自身のバンドに演奏者を追加したい場合当方で負担します</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="mb-4" style={{ color: '#fff76a', fontWeight: 'bold' }}>収益分配</h3>
+                  <p className="ml-4">イベント（スポンサー収入・アフターパーティー含）収益は全額参加者で分配（集客比率により按分します）</p>
+                </div>
+
+                <div>
+                  <h3 
+                    className="mb-4"
+                    style={{ 
+                      fontFamily: 'Lulo Clean, sans-serif',
+                      fontWeight: 'bold',
+                      color: '#fff76a'
+                    }}
+                  >
+                    VIP・アフターパーティー
+                  </h3>
+                  <ul className="space-y-2 ml-4">
+                    <li>VIP席を用意、VIP席を中心に配信者と交流</li>
+                    <li>アフターパーティーを開催、配信者どうしとVIP客との交流</li>
+                  </ul>
+                </div>
+
+                <div className="text-center mt-12">
+                  <a href={applicationUrl} target="_blank" rel="noopener noreferrer">
+                    <Button className="text-black px-8 py-6 rounded-none" style={{ backgroundColor: '#fff76a' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ffe94d'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff76a'}>
+                      <span className="font-bold">応募はこちら</span>
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-black py-8 px-6">
+            <div className="max-w-7xl mx-auto text-center text-white">
+              <p>©️2025 Musshroom Stamps（仮）</p>
+            </div>
+          </footer>
+        </>
+      );
+    };
+
+    // NewsPageコンポーネント
+    const NewsPage = ({ onBack }) => {
+      const allNews = [
+        {
+          date: "2025.10.28",
+          title: "参加配信者募集開始",
+          description: "イベントに参加したい配信者の募集を開始いたしました。演奏とファンとのコミュニケーションを本気でしたい配信者の方々の応募をお待ちしております。イベント会議への参加、30分のステージの準備、動画内での告知協力など、ご協力いただける方を募集しています。参加ご希望の方は応募フォームよりご応募ください。"
+        },
+        {
+          date: "2025.11.1",
+          title: "企画始動",
+          description: "配信者たちによる新しい音楽イベント「mushroomjam2026」の企画がスタートしました。普段は音楽活動をしていない配信者たちが集まり、本気の音楽LIVEを届けるという前代未聞の企画です。参加者も一緒に楽しめる体験型コンテンツも多数企画中です。今後の情報公開をどうぞお楽しみに！"
+        }
+      ];
+
+      return (
+        <div className="min-h-screen pt-24 pb-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 transition-colors mb-8"
+              style={{ color: '#fff76a', background: 'transparent', border: 'none' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffe94d'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#fff76a'}
+            >
+              <ArrowLeftIcon className="w-5 h-5" />
+              戻る
+            </button>
+
+            <h1 
+              className="mb-12 text-center"
+              style={{ 
+                fontFamily: 'Lulo Clean, sans-serif',
+                fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+                fontWeight: 'bold',
+                color: '#fff76a'
+              }}
+            >
+              NEWS
+            </h1>
+
+            <div className="space-y-12">
+              {allNews.map((item, index) => (
+                <article key={index} className="bg-black/60 backdrop-blur-sm p-8 rounded-lg border border-gray-800">
+                  <h2 
+                    className="mb-4"
+                    style={{ 
+                      fontFamily: 'Lulo Clean, sans-serif',
+                      fontWeight: 'bold',
+                      fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
+                      color: '#fff76a'
+                    }}
+                  >
+                    {item.date} {item.title}
+                  </h2>
+                  <p className="text-white mb-4">{item.description}</p>
+                  <div className="text-gray-300 leading-relaxed">
+                    {item.fullContent}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // Appコンポーネント
+    const App = () => {
+      const [currentPage, setCurrentPage] = useState('home');
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+      const scrollToSection = (id) => {
+        setCurrentPage('home');
+        setMobileMenuOpen(false);
+        setTimeout(() => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      };
+
+      return (
+        <div className="min-h-screen">
+          {/* Header */}
+          <header className="fixed top-0 left-0 right-0 bg-black/80 backdrop-blur-sm z-50 px-6 py-4">
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+              <div className="flex items-center gap-2 cursor-pointer" onClick={() => setCurrentPage('home')}>
+                <MushroomIcon />
+              </div>
+              
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex gap-8">
+                <button onClick={() => scrollToSection('home')} className="text-white transition-colors" style={{ color: 'white', background: 'transparent', border: 'none'}} onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>
+                  Home
+                </button>
+                <button onClick={() => scrollToSection('about')} className="text-white transition-colors" style={{ color: 'white', background: 'transparent', border: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>
+                  About
+                </button>
+                <button onClick={() => scrollToSection('artist')} className="text-white transition-colors" style={{ color: 'white', background: 'transparent', border: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>
+                  Artist
+                </button>
+                <button onClick={() => scrollToSection('details')} className="text-white transition-colors" style={{ color: 'white', background: 'transparent', border: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>
+                  イベント詳細
+                </button>
+                <button onClick={() => scrollToSection('requirements')} className="text-white transition-colors" style={{ color: 'white', background: 'transparent', border: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'} onMouseLeave={(e) => e.currentTarget.style.color = 'white'}>
+                  参加要項
+                </button>
+              </nav>
+
+              {/* Mobile Menu Button */}
+              <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white"
+              onMouseEnter={(e) => e.currentTarget.style.color = '#fff76a'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
+              style={{ background: 'transparent', border: 'none', padding: 0, color: 'white' }}
+              >
+              {mobileMenuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
+            </button>
+            </div>
+
+            {/* Mobile Navigation Menu */}
+            {mobileMenuOpen && (
+              <nav className="md:hidden mt-4 pb-4 border-t border-gray-700 pt-4">
+                <div className="flex flex-col gap-4">
+                  <button 
+                    onClick={() => scrollToSection('home')} 
+                    className="text-white text-left py-2 transition-colors"
+                    style={{ color: 'white', background: 'transparent', border: 'none' }}
+                    onTouchStart={(e) => e.currentTarget.style.color = '#fff76a'}
+                    onTouchEnd={(e) => e.currentTarget.style.color = 'white'}
+                  >
+                    Home
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('about')} 
+                    className="text-white text-left py-2 transition-colors"
+                    style={{ color: 'white', background: 'transparent', border: 'none' }}
+                    onTouchStart={(e) => e.currentTarget.style.color = '#fff76a'}
+                    onTouchEnd={(e) => e.currentTarget.style.color = 'white'}
+                  >
+                    About
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('artist')} 
+                    className="text-white text-left py-2 transition-colors"
+                    style={{ color: 'white', background: 'transparent', border: 'none' }}
+                    onTouchStart={(e) => e.currentTarget.style.color = '#fff76a'}
+                    onTouchEnd={(e) => e.currentTarget.style.color = 'white'}
+                  >
+                    Artist
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('details')} 
+                    className="text-white text-left py-2 transition-colors"
+                    style={{ color: 'white', background: 'transparent', border: 'none' }}
+                    onTouchStart={(e) => e.currentTarget.style.color = '#fff76a'}
+                    onTouchEnd={(e) => e.currentTarget.style.color = 'white'}
+                  >
+                    イベント詳細
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('requirements')} 
+                    className="text-white text-left py-2 transition-colors"
+                    style={{ color: 'white', background: 'transparent', border: 'none'}}
+                    onTouchStart={(e) => e.currentTarget.style.color = '#fff76a'}
+                    onTouchEnd={(e) => e.currentTarget.style.color = 'white'}
+                  >
+                    参加要項
+                  </button>
+                </div>
+              </nav>
+            )}
+          </header>
+
+          {/* Fixed Background */}
+          <BackgroundImage src={bgImage} />
+          <div className="fixed inset-0 bg-black/20 z-0" />
+
+          {/* Content */}
+          <div className="relative z-10">
+            {currentPage === 'home' ? (
+              <HomePage onNavigateToNews={() => setCurrentPage('news')} />
+            ) : (
+              <NewsPage onBack={() => setCurrentPage('home')} />
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    // レンダリング
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

@@ -17,18 +17,76 @@
     <header>
         <nav>
             <div class="logo">mushroomstamps</div>
-            <ul>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="メニューを開く">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
                 <li><a href="#game">GAME</a></li>
                 <li><a href="#members">MEMBERS</a></li>
                 <li><a href="#biography">BIOGRAPHY</a></li>
+                <li><a href="jam.html">JAM 2026</a></li>
             </ul>
+            <div class="header-sns">
+                <a href="https://www.instagram.com/mushroom_stamps/" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-small">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@mushroomstamps00" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-small">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </a>
+                <span class="sns-icon sns-icon-small sns-icon-disabled">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </span>
+            </div>
         </nav>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-links">
+                <li><a href="#hero" class="mobile-nav-link">HOME</a></li>
+                <li><a href="#game" class="mobile-nav-link">GAME</a></li>
+                <li><a href="#members" class="mobile-nav-link">MEMBERS</a></li>
+                <li><a href="#biography" class="mobile-nav-link">BIOGRAPHY</a></li>
+                <li><a href="jam.html" class="mobile-nav-link">JAM 2026</a></li>
+            </ul>
+            <div class="mobile-sns">
+                <a href="https://www.instagram.com/mushroom_stamps/" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-mobile">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@mushroomstamps00" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-mobile">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </a>
+                <span class="sns-icon sns-icon-mobile sns-icon-disabled">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <section id="hero">
         <div class="hero-content">
-            <h1>mushroomstamps</h1>
-            <!-- Game Container Moved Here -->
+            <!-- Logo Image -->
+            <div class="hero-logo">
+                <img src="img/hero-bg.png" alt="mushroomstamps">
+            </div>
+            <!-- SNS Icons -->
+            <div class="hero-sns">
+                <a href="https://www.instagram.com/mushroom_stamps/" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-large">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@mushroomstamps00" target="_blank" rel="noopener noreferrer" class="sns-icon sns-icon-large">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </a>
+                <span class="sns-icon sns-icon-large sns-icon-disabled">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </span>
+            </div>
+            <!-- Game Container -->
             <div id="game-container">
                 <div id="game-ui-layer">
                     <div id="start-screen">
@@ -65,33 +123,33 @@
         <div class="container">
             <h2>MEMBERS</h2>
             <div class="members-grid">
-                <div class="member-card">
+                <div class="member-card" data-member="haru" data-img="img/mash_fix1410.jpg" data-bio="ボーカル&ギター担当。バンドの中心的存在で、独特の歌声とギタープレイでサウンドを牽引する。">
                     <div class="member-img"><img src="img/mash_fix1410.jpg" alt="haru"></div>
                     <h3>haru</h3>
                     <p>Vo. / Gu.</p>
                 </div>
-                <div class="member-card">
-                    <div class="member-img"><img src="img/mash_fix1441.jpg" alt="jojo"></div>
+                <div class="member-card" data-member="jojo" data-img="img/mash_fix1465.jpg" data-bio="ギター担当。テクニカルなプレイとエモーショナルなサウンドでバンドに彩りを加える。">
+                    <div class="member-img"><img src="img/mash_fix1465.jpg" alt="jojo"></div>
                     <h3>jojo</h3>
                     <p>Gu.</p>
                 </div>
-                <div class="member-card">
+                <div class="member-card" data-member="kenkichi" data-img="img/mash_fix1390.jpg" data-bio="ギター担当。サイケデリックなサウンドを追求し、独自のエフェクトワークが持ち味。">
                     <div class="member-img"><img src="img/mash_fix1390.jpg" alt="KENKICHI"></div>
                     <h3>KENKICHI</h3>
                     <p>Gu.</p>
                 </div>
-                <div class="member-card">
+                <div class="member-card" data-member="jotaro" data-img="img/mash_fix1453.jpg" data-bio="ベース担当。重厚なベースラインでバンドのグルーヴを支える屋台骨。">
                     <div class="member-img"><img src="img/mash_fix1453.jpg" alt="jotaro"></div>
                     <h3>jotaro</h3>
                     <p>Ba.</p>
                 </div>
-                <div class="member-card">
+                <div class="member-card" data-member="eiichi" data-img="img/mash_fix1421.jpg" data-bio="キーボード担当。シンセサイザーを駆使し、バンドに独特のスペーシーなサウンドを加える。">
                     <div class="member-img"><img src="img/mash_fix1421.jpg" alt="eiichi"></div>
                     <h3>eiichi</h3>
                     <p>Key.</p>
                 </div>
-                <div class="member-card">
-                    <div class="member-img"><img src="img/mash_fix1465.jpg" alt="ichiro"></div>
+                <div class="member-card" data-member="ichiro" data-img="img/mash_fix1441.jpg" data-bio="ドラム担当。タイトでダイナミックなドラミングでバンドのリズムを牽引する。">
+                    <div class="member-img"><img src="img/mash_fix1441.jpg" alt="ichiro"></div>
                     <h3>ichiro</h3>
                     <p>Dr.</p>
                 </div>
@@ -112,6 +170,22 @@
         </div>
     </section>
 
+    <!-- Member Modal -->
+    <div class="member-modal" id="member-modal">
+        <div class="member-modal-overlay"></div>
+        <div class="member-modal-content">
+            <button class="member-modal-close" aria-label="閉じる">&times;</button>
+            <div class="member-modal-img">
+                <img id="modal-member-img" src="" alt="">
+            </div>
+            <div class="member-modal-info">
+                <h3 id="modal-member-name"></h3>
+                <p class="member-modal-role" id="modal-member-role"></p>
+                <p class="member-modal-bio" id="modal-member-bio"></p>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 mushroomstamps. All rights reserved.</p>
     </footer>
@@ -119,6 +193,94 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
     <script src="game.js?v=3"></script>
     <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when clicking a link
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenuOverlay.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Close menu when clicking overlay background
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close menu on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && mobileMenuOverlay.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Member Modal
+        const memberModal = document.getElementById('member-modal');
+        const memberModalOverlay = memberModal.querySelector('.member-modal-overlay');
+        const memberModalClose = memberModal.querySelector('.member-modal-close');
+        const modalMemberImg = document.getElementById('modal-member-img');
+        const modalMemberName = document.getElementById('modal-member-name');
+        const modalMemberRole = document.getElementById('modal-member-role');
+        const modalMemberBio = document.getElementById('modal-member-bio');
+        const memberCards = document.querySelectorAll('.member-card');
+
+        function openMemberModal(card) {
+            const img = card.getAttribute('data-img');
+            const name = card.querySelector('h3').textContent;
+            const role = card.querySelector('p').textContent;
+            const bio = card.getAttribute('data-bio');
+
+            modalMemberImg.src = img;
+            modalMemberImg.alt = name;
+            modalMemberName.textContent = name;
+            modalMemberRole.textContent = role;
+            modalMemberBio.textContent = bio;
+
+            memberModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMemberModal() {
+            memberModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        memberCards.forEach(card => {
+            card.addEventListener('click', () => openMemberModal(card));
+        });
+
+        memberModalClose.addEventListener('click', closeMemberModal);
+        memberModalOverlay.addEventListener('click', closeMemberModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && memberModal.classList.contains('active')) {
+                closeMemberModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
