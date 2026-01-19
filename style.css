@@ -186,22 +186,6 @@ nav a:hover {
     z-index: 1;
 }
 
-#hero h1 {
-    font-size: 5rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 20px rgba(176, 38, 255, 0.5));
-}
-
-#hero p {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    color: #ccc;
-    display: none;
-    /* Hide description */
-}
 
 .cta-button {
     padding: 15px 40px;
@@ -753,11 +737,6 @@ footer {
         padding-bottom: 40px;
     }
 
-    #hero h1 {
-        font-size: 2.2rem;
-        letter-spacing: 1px;
-    }
-
     .hero-sns {
         margin-top: 60px;
         margin-bottom: 60px;
@@ -889,17 +868,12 @@ footer {
 
 /* Responsive - Small Mobile */
 @media (max-width: 480px) {
-    #hero h1 {
-        font-size: 1.8rem;
-    }
-
     .mobile-nav-link {
         font-size: 1.5rem;
     }
 
     /* Keep 3 columns on small mobile */
     .members-grid {
-        grid-template-columns: repeat(3, 1fr);
         gap: 3px;
     }
 
@@ -908,8 +882,6 @@ footer {
     }
 
     .member-img {
-        height: auto;
-        aspect-ratio: 1 / 1.2;
         margin-bottom: 5px;
     }
 

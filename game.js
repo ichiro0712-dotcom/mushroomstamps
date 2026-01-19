@@ -47,18 +47,7 @@ const MUSHROOMS = [
     { type: 'mushroomstamps', scale: 260 / 1024, score: 640, radius: 130 } // 260px dia
 ];
 
-// Initialize game when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const startBtn = document.getElementById('start-btn');
-    if (startBtn) {
-        startBtn.addEventListener('click', startGame);
-    }
-
-    const restartBtn = document.getElementById('restart-btn');
-    if (restartBtn) {
-        restartBtn.addEventListener('click', startGame);
-    }
-});
+// Note: startGame is called via onclick attribute in HTML, no duplicate listener needed
 
 let loadingInterval;
 
@@ -129,16 +118,14 @@ function preload() {
     // We'll let the fake one run until create() is called to ensure it looks active.
     // Or we can sync them? Let's just stick to the fake one as requested.
 
-    // Cache busting with timestamp
-    const v = Date.now();
-    this.load.image('bg', `img/bg.png?v=${v}`);
-    this.load.image('enoki', `img/enoki_ball.png?v=${v}`);
-    this.load.image('shimeji', `img/shimeji_ball.png?v=${v}`);
-    this.load.image('shiitake', `img/shiitake_ball.png?v=${v}`);
-    this.load.image('eringi', `img/eringi_ball.png?v=${v}`);
-    this.load.image('matsutake', `img/matsutake_ball.png?v=${v}`);
-    this.load.image('kikurage', `img/kikurage_ball.png?v=${v}`);
-    this.load.image('mushroomstamps', `img/mushroomstamps_ball.png?v=${v}`);
+    this.load.image('bg', 'img/bg.png');
+    this.load.image('enoki', 'img/enoki_ball.png');
+    this.load.image('shimeji', 'img/shimeji_ball.png');
+    this.load.image('shiitake', 'img/shiitake_ball.png');
+    this.load.image('eringi', 'img/eringi_ball.png');
+    this.load.image('matsutake', 'img/matsutake_ball.png');
+    this.load.image('kikurage', 'img/kikurage_ball.png');
+    this.load.image('mushroomstamps', 'img/mushroomstamps_ball.png');
 
     // Load BGM
     this.load.audio('bgm', 'bgm/game01.mp3');
@@ -250,7 +237,6 @@ function update() {
 
 function gameOver() {
     isGameOver = true;
-    console.log("Game Over");
 
     // Stop BGM
     if (bgm) {
